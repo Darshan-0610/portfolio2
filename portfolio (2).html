@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Darshan Patel - IEEE Junior Technical Head and Computer Engineering Student Portfolio">
+    <title>Darshan Patel | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #a78bfa;
+            --dark-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text-light: #e8e8e8;
+            --text-gray: #a0a0a0;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #1a252f, #2d3e50, #312e81, #1e293b);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section */
+        section {
+            min-height: 100vh;
+            padding: 100px 2rem 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #home {
+            background: transparent;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient-2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* About Section */
+        #about {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: block;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .info-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .info-box {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateX(5px);
+        }
+
+        .info-box strong {
+            color: var(--accent-color);
+        }
+
+        /* Skills Section */
+        #skills {
+            background: transparent;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: rgba(26, 26, 46, 0.8);
+            padding: 2rem 1rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .skill-card h3 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(26, 26, 46, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .project-content p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: transparent;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(26, 26, 46, 0.9);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: 12px;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-light);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        button[type="submit"] {
+            padding: 15px;
+            background: var(--gradient-2);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            list-style: none;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(26, 26, 46, 0.98);
+                width: 70%;
+                max-width: 300px;
+                padding: 2rem;
+                gap: 1rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+                border-radius: 10px 0 0 10px;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .info-boxes {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 1rem 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-container {
+                padding: 1.5rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-links a {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">Darshan Patel</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home/Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Darshan Patel</h1>
+                    <p class="subtitle">IEEE x CRCE Jr. Tech Head</p>
+                    <p>Computer Engineering Student at Fr. Conceicao Rodrigues College of Engineering, passionate about building innovative solutions and exploring new technologies.</p>
+                    <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hello! I'm Darshan Patel</h3>
+                    <p>I'm IEEE x CRCE Jr. Tech Head and a Computer Engineering undergraduate at Fr. Conceicao Rodrigues College of Engineering. I'm passionate about leveraging technology to create innovative solutions and make a meaningful impact.</p>
+                    <p>I specialize in full-stack development with a keen interest in artificial intelligence and machine learning. My focus areas include building responsive web applications, exploring data structures and algorithms, and staying updated with emerging technologies.</p>
+                    <div class="info-boxes">
+                        <div class="info-box">
+                            <strong>🎓 Education:</strong><br>
+                            Studying Computer Engineering
+                        </div>
+                        <div class="info-box">
+                            <strong>💼 Position:</strong><br>
+                            IEEE Junior Technical Head
+                        </div>
+                        <div class="info-box">
+                            <strong>🌍 Location:</strong><br>
+                            Based in India
+                        </div>
+                        <div class="info-box">
+                            <strong>🚀 Goal:</strong><br>
+                            Building Tomorrow's Solutions
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <article class="skill-card">
+                    <h3>JavaScript</h3>
+                </article>
+                <article class="skill-card">
+                    <h3>TypeScript</h3>
+                </article>
+                <article class="skill-card">
+                    <h3>React</h3>
+                </article>
+                <article class="skill-card">
+                    <h3>Node.js</h3>
+                </article>
+                <article class="skill-card">
+                    <h3>Python</h3>
+                </article>
+                <article class="skill-card">
+                    <h3>PostgreSQL</h3>
+                </article>
+                <article class="skill-card">
+                    <h3>MongoDB</h3>
+                </article>
+                <article class="skill-card">
+                    <h3>Git</h3>
+                </article>
+                <article class="skill-card">
+                    <h3>HTML/CSS</h3>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-image">🛒</div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack marketplace application with real-time inventory management, secure payment integration, and dynamic product filtering. Built with React, Node.js, and PostgreSQL.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image">✅</div>
+                    <div class="project-content">
+                        <h3>Task Management App</h3>
+                        <p>Collaborative productivity tool featuring drag-and-drop interfaces, team workspaces, and real-time synchronization. Implemented with React, Firebase, and Material-UI.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image">🌤️</div>
+                    <div class="project-content">
+                        <h3>Weather Dashboard</h3>
+                        <p>Interactive weather forecasting application with geolocation services, historical data visualization, and severe weather alerts. Powered by OpenWeather API and Chart.js.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image">📊</div>
+                    <div class="project-content">
+                        <h3>Social Media Analytics</h3>
+                        <p>Data visualization platform analyzing engagement metrics across multiple social platforms. Built with Python, Pandas, and D3.js for dynamic charts.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image">🎨</div>
+                    <div class="project-content">
+                        <h3>Portfolio Generator</h3>
+                        <p>Open-source tool enabling developers to create customizable portfolio websites through a simple configuration file. Features template engine and GitHub Pages deployment.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image">💪</div>
+                    <div class="project-content">
+                        <h3>Fitness Tracker API</h3>
+                        <p>RESTful API for tracking workouts, nutrition, and health metrics. Includes authentication, data aggregation, and detailed analytics endpoints. Built with Express and MongoDB.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-container">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <ul class="social-links">
+            <li><a href="mailto:darshanpatel3c@gmail.com" title="Email" aria-label="Email">📧</a></li>
+            <li><a href="http://github.com/Darshan-0610" title="GitHub" target="_blank" rel="noopener noreferrer" aria-label="GitHub">🔗</a></li>
+            <li><a href="https://www.linkedin.com/in/darshan-patel06" title="LinkedIn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a></li>
+        </ul>
+        <div class="copyright">
+            <p>&copy; 2025 Darshan Patel. All rights reserved.</p>
+            <p>IEEE x CRCE Junior Technical Head | CRCE'28</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
